@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "2c7a8915-51f3-40b8-8875-c0c20b018cd1",
+		"name": "Negative API Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19140045",
+		"_collection_link": "https://assetdataio.postman.co/workspace/My-Workspace~c92a2f3a-2ead-44d0-85f8-040353bfd3fe/collection/19140045-2c7a8915-51f3-40b8-8875-c0c20b018cd1?action=share&source=collection_link&creator=19140045"
+	},
+	"item": [
+		{
+			"name": "Add User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// this code for automate response from POST. if response 200/204 then message will be appeared \"Successful POST request\" else \"FAIL Successful POST request\"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([20, 204]);",
+							"});",
+							"// this code for automate time response. if respone time less than 1000ms then message will be appeared \"Response time is less than 1000ms\" else \" FAIL Response time is less than 1000ms\"",
+							"pm.test(\"Response time is less than 100ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);",
+							"});",
+							"//this code for automate verification headers get content-type.",
+							"pm.test(\"Verify response headers have expected values\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Accept\")).to.include(\"application/json\");",
+							"});",
+							"//this code for schema type data in payload using",
+							"const expectedSchema = {",
+							"  \"type\": \"object\",",
+							"  \"properties\": {",
+							"    \"name\": {",
+							"      \"type\": \"array\",",
+							"    \"email\": {",
+							"       \"type\": \"array\",",
+							"    \"gender\" : {",
+							"        \"type\": \"array\"",
+							"    }",
+							"        },",
+							"        \"required\": [",
+							"          \"name\",",
+							"          \"email\",",
+							"          \"gender\"",
+							"        ]",
+							"      }",
+							"    }",
+							"  };",
+							"",
+							"pm.test('response matches JSON schema', () => {",
+							"    pm.response.to.have.jsonSchema(expectedSchema);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ae181045e2c211e897a4cf823c0d1f8976a087f83a9af4e9e595454b296c29b",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "oyo",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "oyo@example.io",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/public/v2/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Detail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// this code for automate time response. if respone time less than 100ms then message will be appeared \"Response time is less than 1000ms\" else \" FAIL Response time is less than 100ms\"",
+							"pm.test(\"Response time is less than 100ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);",
+							"});",
+							"// this code for automate response from GET. if response 200 then message will be appeared \"Successful request\" else \"FAIL Successful request\"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"//this code for automate verification headers get content-type.",
+							"pm.test(\"Verify response headers have expected values\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Accept\")).to.include(\"application/json\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ae181045e2c211e897a4cf823c0d1f8976a087f83a9af4e9e595454b296c29b",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/public/v2/users/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5985770"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// this code for automate response from POST. if response 201 then message will be appeared \"Successful request\" else \"FAIL Successful request\"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"//this code for automate verification headers get content-type.",
+							"pm.test(\"Verify response headers have expected values\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Accept\")).to.include(\"application/json\");",
+							"});",
+							"// this code for automate time response. if respone time less than 1000ms then message will be appeared \"Response time is less than 1000ms\" else \" FAIL Response time is less than 1000ms\"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "kukh",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "kukh@example.io",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/public/v2/users/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5985770"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// this code for automate response. if response 200 then message will be appeared \"Successful request\" else \"FAIL Successful request\"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"// this code for automate time response. if respone time less than 100ms then message will be appeared \"Response time is less than 1000ms\" else \" FAIL Response time is less than 1000ms\"",
+							"pm.test(\"Response time is less than 100ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/public/v2/users/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5985770"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://gorest.co.in",
+			"type": "string"
+		},
+		{
+			"key": "apiKey",
+			"value": "Enter valid key",
+			"type": "string"
+		}
+	]
+}

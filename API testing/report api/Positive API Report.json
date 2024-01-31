@@ -1,0 +1,200 @@
+{
+	"id": "1d5de3d1-cad0-4cba-aee7-4666af019edf",
+	"name": "Positive API Test",
+	"timestamp": "2024-01-19T14:41:14.426Z",
+	"collection_id": "19140045-42554811-b5ad-4869-855e-9feaf9345ea6",
+	"folder_id": 0,
+	"environment_id": "19140045-20be1778-65be-4520-b569-694e6105b5da",
+	"totalPass": 13,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-01-19T14:41:11.655Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "4a5daadc-3747-45fc-b33e-1c6a0248a8c4",
+			"name": "Add User",
+			"url": "https://gorest.co.in/public/v2/users",
+			"time": 612,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Response time is less than 1000ms": true,
+				"Verify response headers have expected values": true,
+				"response matches JSON schema": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify response headers have expected values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response matches JSON schema": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				612
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Response time is less than 1000ms": true,
+					"Verify response headers have expected values": true,
+					"response matches JSON schema": true
+				}
+			]
+		},
+		{
+			"id": "046ff8ad-27f2-4cc2-88e1-048d396d58c5",
+			"name": "User Detail",
+			"url": "https://gorest.co.in/public/v2/users/5986507",
+			"time": 550,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Verify response headers have expected values": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify response headers have expected values": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				550
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Verify response headers have expected values": true
+				}
+			]
+		},
+		{
+			"id": "cc2217b1-f8e4-409b-99c3-8a6fc6d08b23",
+			"name": "Update User",
+			"url": "https://gorest.co.in/public/v2/users/5986507",
+			"time": 528,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Verify response headers have expected values": true,
+				"Response time is less than 1000ms": true,
+				"response matches JSON schema": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify response headers have expected values": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response matches JSON schema": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				528
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Verify response headers have expected values": true,
+					"Response time is less than 1000ms": true,
+					"response matches JSON schema": true
+				}
+			]
+		},
+		{
+			"id": "8b1c1f33-c750-4790-97bb-ac3234a2c38e",
+			"name": "Delete User",
+			"url": "https://gorest.co.in/public/v2/users/5986507",
+			"time": 735,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true,
+				"Response time is less than 2000ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 2000ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				735
+			],
+			"allTests": [
+				{
+					"Status code is 204": true,
+					"Response time is less than 2000ms": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2425,
+	"collection": {
+		"requests": [
+			{
+				"id": "4a5daadc-3747-45fc-b33e-1c6a0248a8c4",
+				"method": "POST"
+			},
+			{
+				"id": "046ff8ad-27f2-4cc2-88e1-048d396d58c5",
+				"method": "GET"
+			},
+			{
+				"id": "cc2217b1-f8e4-409b-99c3-8a6fc6d08b23",
+				"method": "PUT"
+			},
+			{
+				"id": "8b1c1f33-c750-4790-97bb-ac3234a2c38e",
+				"method": "DELETE"
+			}
+		]
+	}
+}
